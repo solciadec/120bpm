@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Valor de las Ideas — Boceto</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: #F5F0E8;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+  }
+
+  .infografia {
+    width: 960px;
+    background: #FDFAF4;
+    border-radius: 16px;
+    padding: 50px 50px 60px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.10);
+  }
+
+  /* ── HEADER ── */
+  .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 48px;
+    position: relative;
+  }
+
+  .header-tag {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #1D6B6B;
+    margin-bottom: 12px;
+  }
+
+  .header h1 {
+    font-size: 38px;
+    font-weight: 800;
+    color: #1a1a1a;
+    text-align: center;
+    line-height: 1.15;
+  }
+
+  .header h1 span {
+    color: #1D6B6B;
+  }
+
+  .header-sub {
+    font-size: 14px;
+    color: #888;
+    margin-top: 12px;
+    text-align: center;
+    font-weight: 400;
+    max-width: 500px;
+  }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 24px;
+    width: 100%;
+    max-width: 500px;
+  }
+  .divider-line { flex: 1; height: 1px; background: #ddd; }
+  .divider-bulb { font-size: 26px; }
+
+  /* ── BULB SVG CENTER ── */
+  .bulb-center {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 44px;
+  }
+
+  /* ── COLUMNS ── */
+  .columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+  }
+
+  .col {
+    border-radius: 14px;
+    padding: 32px 26px 36px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .col::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 5px;
+    border-radius: 14px 14px 0 0;
+  }
+
+  .col-think  { background: #EFF8F7; }
+  .col-marca  { background: #FDF0EE; }
+  .col-futuro { background: #EEF4F8; }
+
+  .col-think::before  { background: #1D6B6B; }
+  .col-marca::before  { background: #E05A4B; }
+  .col-futuro::before { background: #7BAEC8; }
+
+  .col-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-bottom: 18px;
+  }
+
+  .col-think .col-icon  { background: #1D6B6B22; }
+  .col-marca .col-icon  { background: #E05A4B22; }
+  .col-futuro .col-icon { background: #7BAEC822; }
+
+  .col-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .col-think .col-label  { color: #1D6B6B; }
+  .col-marca .col-label  { color: #C0392B; }
+  .col-futuro .col-label { color: #4A85A8; }
+
+  .col h2 {
+    font-size: 20px;
+    font-weight: 800;
+    color: #1a1a1a;
+    margin-bottom: 6px;
+    line-height: 1.2;
+  }
+
+  .col-anchor {
+    font-size: 12px;
+    font-style: italic;
+    color: #999;
+    margin-bottom: 20px;
+    line-height: 1.4;
+  }
+
+  .col hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin-bottom: 18px;
+  }
+
+  .col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .col ul li {
+    font-size: 13px;
+    color: #444;
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    line-height: 1.4;
+  }
+
+  .col ul li .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+
+  .col-think  .dot { background: #1D6B6B; }
+  .col-marca  .dot { background: #E05A4B; }
+  .col-futuro .dot { background: #7BAEC8; }
+
+  /* ── FOOTER ── */
+  .footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 44px;
+    padding-top: 28px;
+    border-top: 1px solid #e5e0d8;
+  }
+
+  .footer-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+  }
+
+  .footer p {
+    font-size: 11px;
+    color: #bbb;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+<div class="infografia">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-tag">Propuesta de valor · 2025</div>
+    <h1>El <span>valor</span> de las ideas</h1>
+    <p class="header-sub">Tres ejes que transforman el pensamiento creativo en ventaja real para las marcas y las personas.</p>
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-bulb">💡</div>
+      <div class="divider-line"></div>
+    </div>
+  </div>
+
+  <!-- BOMBILLA SVG CENTRAL -->
+  <div class="bulb-center">
+    <svg width="160" height="200" viewBox="0 0 160 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Base -->
+      <rect x="55" y="158" width="50" height="9" rx="4" fill="#ccc"/>
+      <rect x="59" y="169" width="42" height="9" rx="4" fill="#bbb"/>
+      <rect x="63" y="180" width="34" height="9" rx="4" fill="#aaa"/>
+      <!-- Bulb body — think -->
+      <path d="M80 20 C38 20 10 50 10 85 C10 115 30 135 50 148 L80 148 L80 20Z" fill="#1D6B6B"/>
+      <!-- Bulb body — marca -->
+      <path d="M80 20 C122 20 150 50 150 85 C150 115 128 136 108 148 L80 148 L80 20Z" fill="#E05A4B" opacity="0.85"/>
+      <!-- Bulb body — futuro (bottom) -->
+      <path d="M50 148 Q65 158 80 158 Q95 158 110 148 L80 148Z" fill="#7BAEC8"/>
+      <!-- Separator lines -->
+      <line x1="80" y1="20" x2="80" y2="158" stroke="white" stroke-width="2"/>
+      <line x1="80" y1="148" x2="50" y2="148" stroke="white" stroke-width="2"/>
+      <line x1="80" y1="148" x2="110" y2="148" stroke="white" stroke-width="2"/>
+      <!-- Labels inside -->
+      <text x="46" y="90" font-family="Montserrat,sans-serif" font-size="9" font-weight="700" fill="white" text-anchor="middle">THINK</text>
+      <text x="46" y="101" font-family="Montserrat,sans-serif" font-size="9" font-weight="700" fill="white" text-anchor="middle">TANK</text>
+      <text x="114" y="90" font-family="Montserrat,sans-serif" font-size="9" font-weight="700" fill="white" text-anchor="middle">MARCA</text>
+      <text x="80" y="152" font-family="Montserrat,sans-serif" font-size="8" font-weight="700" fill="white" text-anchor="middle">FUTURO</text>
+      <!-- Dashed outline -->
+      <path d="M80 18 C36 18 8 49 8 85 C8 116 28 137 50 150 Q65 160 80 160 Q95 160 110 150 C132 137 152 116 152 85 C152 49 124 18 80 18Z"
+            stroke="#1D6B6B" stroke-width="1.5" stroke-dasharray="5 4" fill="none" opacity="0.4"/>
+    </svg>
+  </div>
+
+  <!-- 3 COLUMNAS -->
+  <div class="columns">
+
+    <!-- THINK TANK -->
+    <div class="col col-think">
+      <div class="col-icon">🧠</div>
+      <div class="col-label">Eje 01</div>
+      <h2>Think Tank</h2>
+      <p class="col-anchor">Donde nace la innovación.</p>
+      <hr>
+      <ul>
+        <li><span class="dot"></span>Evolución creativa y diseño</li>
+        <li><span class="dot"></span>Ideación y razonamiento</li>
+        <li><span class="dot"></span>Problem solving</li>
+        <li><span class="dot"></span>Nuevos materiales y procesos</li>
+        <li><span class="dot"></span>Cerebro + metodología</li>
+      </ul>
+    </div>
+
+    <!-- MARCA -->
+    <div class="col col-marca">
+      <div class="col-icon">💎</div>
+      <div class="col-label">Eje 02</div>
+      <h2>Marca</h2>
+      <p class="col-anchor">Lo que te hace reconocible.</p>
+      <hr>
+      <ul>
+        <li><span class="dot"></span>Identidad y diferenciación</li>
+        <li><span class="dot"></span>Fidelidad del cliente</li>
+        <li><span class="dot"></span>Prestigio y confianza</li>
+        <li><span class="dot"></span>Status y posicionamiento</li>
+        <li><span class="dot"></span>Conexión emocional</li>
+      </ul>
+    </div>
+
+    <!-- FUTURO -->
+    <div class="col col-futuro">
+      <div class="col-icon">🚀</div>
+      <div class="col-label">Eje 03</div>
+      <h2>Futuro</h2>
+      <p class="col-anchor">Lo que viene en 20 años.</p>
+      <hr>
+      <ul>
+        <li><span class="dot"></span>Nuevas formas de vivir</li>
+        <li><span class="dot"></span>Habitar y espacios del mañana</li>
+        <li><span class="dot"></span>El trabajo del futuro</li>
+        <li><span class="dot"></span>Adelantarse a tendencias</li>
+        <li><span class="dot"></span>Visión estratégica a largo plazo</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-dot" style="background:#1D6B6B"></div>
+    <div class="footer-dot" style="background:#E05A4B"></div>
+    <div class="footer-dot" style="background:#7BAEC8"></div>
+    <p>Think · Marca · Futuro — El valor de las ideas</p>
+  </div>
+
+</div>
+</body>
+</html>
