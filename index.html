@@ -582,8 +582,8 @@
   }
   /* ── MOBILE RESPONSIVE (al final para ganar prioridad sobre las reglas base) ── */
   @media (max-width: 768px) {
-    /* Bloquear scroll global: cada pantalla ocupa exactamente el alto visible */
-    html, body { height: 100dvh; overflow: hidden; min-height: 0; overscroll-behavior: none; }
+    /* Scroll habilitado en celulares (para poder llegar a los botones) */
+    html, body { min-height: 100dvh; overflow-y: auto; -webkit-overflow-scrolling: touch; }
     /* Ocultar botón "¿Cómo elegir?" en celulares */
     .quiz-hint-wrap { display: none; }
     /* INTRO — todo en una pantalla, sin scroll */
@@ -611,28 +611,28 @@
     /* el bloque "PMGT 3.0 ·..." al pie del panel verde: ocultar para ganar alto */
     .intro-left > div:nth-child(3) { display: none; }
 
-    /* QUIZ — todo en una pantalla, sin scroll */
-    #screen-quiz { height: 100dvh; overflow: hidden; }
+    /* QUIZ — flujo natural, scrollable hasta el botón */
+    #screen-quiz { min-height: 100dvh; overflow: visible; }
     /* Marca de agua girada a la izquierda (vertical) y mas grande, solo en mobile */
     #screen-quiz::before { background-size: 65%; transform: rotate(-90deg); }
     .quiz-top { position: static; padding: 0.55rem 1rem; flex-shrink: 0; }
     .quiz-logo { font-size: 12px; }
     .progress-label { font-size: 10px; margin-top: 3px; }
-    .quiz-body { flex: 1; min-height: 0; padding: 0.6rem 0.75rem; display: flex; flex-direction: column; overflow: hidden; }
+    .quiz-body { flex: 1 0 auto; padding: 0.6rem 0.75rem; display: flex; flex-direction: column; overflow: visible; }
     .quiz-body-inner { margin-bottom: 0.3rem; flex-shrink: 0; }
     .q-area-tag { font-size: 10px; margin-bottom: 0.15rem; }
     /* Títulos atados al alto de pantalla: se achican solos en celulares bajos */
     .q-title { font-size: clamp(15px, 2.5vh, 20px); line-height: 1.12; margin-bottom: 0.15rem; }
     .q-subtitle { font-size: clamp(9.5px, 1.5vh, 11px); margin-bottom: 0; line-height: 1.25; }
-    /* Lista de tarjetas: una debajo de otra, se reparten el alto exacto (sin scroll) */
-    .options { display: flex; flex-direction: column; gap: 7px; margin-top: 0.4rem; flex: 1; min-height: 0; overflow: hidden; padding: 1px; }
-    .option { height: auto; flex: 1 1 0; min-height: 0; flex-direction: row; align-items: stretch; border-radius: 11px; border-width: 1.5px; box-shadow: 0 1px 3px rgba(7,60,59,0.06); }
+    /* Lista de tarjetas: una debajo de otra, alto natural (scrollable) */
+    .options { display: flex; flex-direction: column; gap: 7px; margin-top: 0.4rem; flex: 0 0 auto; overflow: visible; padding: 1px; }
+    .option { height: auto; flex: 0 0 auto; min-height: 60px; flex-direction: row; align-items: stretch; border-radius: 11px; border-width: 1.5px; box-shadow: 0 1px 3px rgba(7,60,59,0.06); }
     .opt-left { width: 62px; flex-shrink: 0; flex-direction: column; align-items: center; justify-content: center; padding: 0.3rem 0; align-self: stretch; }
     .opt-num { font-size: clamp(19px, 3.4vh, 27px); }
     .opt-nivel { font-size: 7.5px; letter-spacing: 0.1em; }
     .opt-divider { width: 1px; height: auto; align-self: stretch; margin: 0; }
     /* Texto de opciones atado al alto: se achica para que entren las 5 sin cortar */
-    .opt-text { flex: 1; font-size: clamp(9.5px, 1.55vh, 12px); line-height: 1.2; padding: clamp(0.15rem, 0.5vh, 0.5rem) 0.65rem; text-align: left; display: flex; align-items: center; -webkit-line-clamp: unset; -webkit-box-orient: unset; overflow: hidden; }
+    .opt-text { flex: 1; font-size: 12px; line-height: 1.3; padding: 0.5rem 0.7rem; text-align: left; display: flex; align-items: center; -webkit-line-clamp: unset; -webkit-box-orient: unset; overflow: visible; }
     .opt-radio { position: absolute; top: 0.4rem; right: 0.4rem; width: 15px; height: 15px; }
     .quiz-hint-wrap { margin-top: 0.3rem; flex-shrink: 0; }
     .btn-hint { padding: 4px 11px; font-size: 11px; }
@@ -729,11 +729,10 @@
 
   @media (max-width: 400px) {
     .opt-left { width: 50px; }
-    .opt-num { font-size: clamp(17px, 3vh, 22px); }
+    .opt-num { font-size: 22px; }
     .opt-nivel { font-size: 7px; }
-    /* En celulares angostos el texto también se adapta al alto para no cortar */
-    .opt-text { font-size: clamp(9px, 1.5vh, 10.5px); line-height: 1.18; padding: clamp(0.12rem, 0.4vh, 0.4rem) 0.55rem; }
-    .q-title { font-size: clamp(14px, 2.4vh, 16px); }
+    .opt-text { font-size: 11px; line-height: 1.3; padding: 0.45rem 0.55rem; }
+    .q-title { font-size: 16px; }
   }
 
 </style>
