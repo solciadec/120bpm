@@ -582,6 +582,8 @@
   }
   /* ── MOBILE RESPONSIVE (al final para ganar prioridad sobre las reglas base) ── */
   @media (max-width: 768px) {
+    /* Ocultar botón "¿Cómo elegir?" en celulares */
+    .quiz-hint-wrap { display: none; }
     /* INTRO — todo en una pantalla, sin scroll */
     #screen-intro { flex-direction: column; height: 100dvh; min-height: 0; overflow: hidden; }
     .intro-left {
