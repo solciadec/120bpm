@@ -582,6 +582,8 @@
   }
   /* ── MOBILE RESPONSIVE (al final para ganar prioridad sobre las reglas base) ── */
   @media (max-width: 768px) {
+    /* Bloquear scroll global: cada pantalla ocupa exactamente el alto visible */
+    html, body { height: 100dvh; overflow: hidden; min-height: 0; overscroll-behavior: none; }
     /* Ocultar botón "¿Cómo elegir?" en celulares */
     .quiz-hint-wrap { display: none; }
     /* INTRO — todo en una pantalla, sin scroll */
@@ -640,7 +642,8 @@
     .btn-back { padding: 8px 14px; font-size: 12px; flex: 0 0 auto; }
     .btn-next { padding: 8px 18px; font-size: 13px; flex: 0 0 auto; }
 
-    /* MILESTONE */
+    /* MILESTONE — pantalla completa sin scroll */
+    #screen-milestone { min-height: 0; height: 100dvh; overflow: hidden; }
     .milestone-wrap { gap: 1.25rem; padding: 2rem 1.5rem; }
     .milestone-ring, .milestone-ring svg { width: 120px; height: 120px; }
     .milestone-ring span { font-size: 30px; }
