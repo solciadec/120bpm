@@ -624,9 +624,10 @@
     /* Títulos atados al alto de pantalla: se achican solos en celulares bajos */
     .q-title { font-size: clamp(15px, 2.5vh, 20px); line-height: 1.12; margin-bottom: 0.15rem; }
     .q-subtitle { font-size: clamp(9.5px, 1.5vh, 11px); margin-bottom: 0; line-height: 1.25; }
-    /* Lista de tarjetas: una debajo de otra, alto natural (scrollable) */
-    .options { display: flex; flex-direction: column; gap: 7px; margin-top: 0.4rem; flex: 0 0 auto; overflow: visible; padding: 1px; }
-    .option { height: auto; flex: 0 0 auto; min-height: 60px; flex-direction: row; align-items: stretch; border-radius: 11px; border-width: 1.5px; box-shadow: 0 1px 3px rgba(7,60,59,0.06); }
+    /* Lista de tarjetas: se reparten el alto disponible (llenan la pantalla, sin pasar 100dvh).
+       Con min-height legible: si no entran, crecen y la página scrollea. */
+    .options { display: flex; flex-direction: column; gap: 8px; margin-top: 0.4rem; flex: 1 1 auto; overflow: visible; padding: 1px; }
+    .option { height: auto; flex: 1 1 auto; min-height: 68px; flex-direction: row; align-items: stretch; border-radius: 11px; border-width: 1.5px; box-shadow: 0 1px 3px rgba(7,60,59,0.06); }
     .opt-left { width: 62px; flex-shrink: 0; flex-direction: column; align-items: center; justify-content: center; padding: 0.3rem 0; align-self: stretch; }
     .opt-num { font-size: clamp(19px, 3.4vh, 27px); }
     .opt-nivel { font-size: 7.5px; letter-spacing: 0.1em; }
